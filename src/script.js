@@ -26,12 +26,15 @@ const gltfLoader = new GLTFLoader()
 gltfLoader.setDRACOLoader(dracoLoader)
 
 let mixer = null
+let burger
 
 gltfLoader.load(
-    '/models/hamburger.glb',
+    '/models/burger.glb',
     (gltf) =>
     {
-        scene.add(gltf.scene)
+        burger = gltf.scene
+        burger.position.y = 1.5
+        scene.add(burger)
     }
 )
 
@@ -53,7 +56,7 @@ scene.add(floor)
 /**
  * Lights
  */
-const ambientLight = new THREE.AmbientLight(0xffffff, 2.4)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.3)
 scene.add(ambientLight)
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1.8)
@@ -65,6 +68,7 @@ directionalLight.shadow.camera.top = 7
 directionalLight.shadow.camera.right = 7
 directionalLight.shadow.camera.bottom = - 7
 directionalLight.position.set(5, 5, 5)
+directionalLight.lookAt(0, 0, 0)
 scene.add(directionalLight)
 
 /**
@@ -129,6 +133,11 @@ const tick = () =>
     if(mixer)
     {
         mixer.update(deltaTime)
+    }
+
+    if(burger)
+    {
+        burger.rotation.y += 0.1 * deltaTime
     }
 
     // Update controls
