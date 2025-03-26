@@ -1,16 +1,4 @@
-# Three.js Journey
+# Blender discovery started there
 
-## Setup
-Download [Node.js](https://nodejs.org/en/download/).
-Run this followed commands:
+I created my first ever item on Blender: a burger !
 
-``` bash
-# Install dependencies (only the first time)
-npm install
-
-# Run the local server at localhost:8080
-npm run dev
-
-# Build for production in the dist/ directory
-npm run build
-```
